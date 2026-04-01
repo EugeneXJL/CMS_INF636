@@ -7,10 +7,14 @@ import CreateShipment from './pages/CreateShipment';
 import TrackPackage from './pages/TrackPackage';
 import ShipmentHistory from './pages/ShipmentHistory';
 import UpdateShipment from './pages/UpdateShipment';
+import AdminLogin from './pages/AdminLogin';
+import AdminDashboard from './pages/AdminDashboard';
+import ManagePackages from './pages/ManagePackages';
+import AdminRegister from './pages/AdminRegister';
 
 const AppContent = () => {
   const location = useLocation();
-  const hideNavbar = location.pathname === '/login' || location.pathname === '/register' || location.pathname === '/';
+  const hideNavbar = ['/', '/login', '/register', '/admin', '/admin/register'].includes(location.pathname);
 
   return (
     <>
@@ -24,6 +28,10 @@ const AppContent = () => {
         <Route path="/track-package" element={<TrackPackage />} />
         <Route path="/shipment-history" element={<ShipmentHistory />} />
         <Route path="/update-shipment/:id" element={<UpdateShipment />} />
+        <Route path="/admin" element={<AdminLogin />} />
+        <Route path="/admin/register" element={<AdminRegister />} />
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        <Route path="/admin/packages" element={<ManagePackages />} />
       </Routes>
     </>
   );
