@@ -8,6 +8,15 @@ This Courier Management System allows customers to create and track shipments, a
 
 **GitHub Starter Project:** [https://github.com/nahaQUT/sampleapp_IFQ636.git](https://github.com/nahaQUT/sampleapp_IFQ636.git)
 
+**Public URL:** http://3.26.167.213
+
+### Demo Accounts
+
+| Role | Email | Password |
+|------|-------|----------|
+| Customer | customer@test.com | test123 |
+| Admin | admin@test.com | test123 |
+
 ## Tech Stack
 
 | Layer | Technology |

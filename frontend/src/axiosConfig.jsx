@@ -1,8 +1,9 @@
 import axios from 'axios';
 
+const isLocal = window.location.hostname === 'localhost';
+
 const axiosInstance = axios.create({
-  //baseURL: 'http://localhost:5001', // local
-  baseURL: 'http://3.26.167.213:5001', // live
+  baseURL: isLocal ? 'http://localhost:5001' : '',
   headers: { 'Content-Type': 'application/json' },
 });
 
