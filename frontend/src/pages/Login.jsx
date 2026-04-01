@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axiosInstance from '../axiosConfig';
 
 const Login = () => {
@@ -13,34 +13,60 @@ const Login = () => {
     try {
       const response = await axiosInstance.post('/api/auth/login', formData);
       login(response.data);
-      navigate('/tasks');
+      navigate('/parcels');
     } catch (error) {
       alert('Login failed. Please try again.');
     }
   };
 
   return (
-    <div className="max-w-md mx-auto mt-20">
-      <form onSubmit={handleSubmit} className="bg-white p-6 shadow-md rounded">
-        <h1 className="text-2xl font-bold mb-4 text-center">Login</h1>
-        <input
-          type="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          className="w-full mb-4 p-2 border rounded"
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-          className="w-full mb-4 p-2 border rounded"
-        />
-        <button type="submit" className="w-full bg-blue-600 text-white p-2 rounded">
-          Login
-        </button>
-      </form>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-200 via-gray-300 to-gray-400">
+      <div className="w-full max-w-5xl mx-4 flex items-center justify-between">
+        {/* Left - Title */}
+        <div className="flex-1">
+          <h1 className="text-7xl font-bold text-gray-500/70 leading-tight tracking-wide">
+            Courier<br />Management<br />System
+          </h1>
+        </div>
+
+        {/* Right - Login Form */}
+        <div className="flex-1 flex flex-col items-end">
+          <form onSubmit={handleSubmit} className="w-80 space-y-4">
+            <input
+              type="email"
+              placeholder="Username"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              className="w-full p-3 border border-gray-300 bg-white text-gray-700 placeholder-gray-400"
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+              className="w-full p-3 border border-gray-300 bg-white text-gray-700 placeholder-gray-400"
+            />
+            <div className="flex gap-4 pt-2">
+              <Link
+                to="/register"
+                className="flex-1 text-center py-2 border border-gray-300 bg-gray-100 text-gray-600 hover:bg-gray-200 transition"
+              >
+                SignUp
+              </Link>
+              <button
+                type="submit"
+                className="flex-1 py-2 border border-gray-300 bg-gray-100 text-gray-600 hover:bg-gray-200 transition"
+              >
+                Login
+              </button>
+            </div>
+          </form>
+
+          <p className="mt-16 text-gray-600 cursor-pointer hover:underline">
+            I am admin
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
