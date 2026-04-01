@@ -17,7 +17,7 @@ const Navbar = () => {
   return (
     <nav className="bg-white border-b border-gray-200 px-6 py-3 flex justify-between items-center">
       <div className="flex items-center space-x-8">
-        <Link to="/parcels" className="flex items-center space-x-2">
+        <Link to={user?.isAdmin ? '/admin/dashboard' : '/shipment-history'} className="flex items-center space-x-2">
           <span className="text-xl font-bold text-gray-700">CMS</span>
         </Link>
         {user && (
@@ -25,6 +25,9 @@ const Navbar = () => {
             <Link to="/create-shipment" className={linkClass('/create-shipment')}>Create Shipment</Link>
             <Link to="/track-package" className={linkClass('/track-package')}>Track Package</Link>
             <Link to="/shipment-history" className={linkClass('/shipment-history')}>Shipment History</Link>
+            {user.isAdmin && (
+              <Link to="/admin/packages" className={linkClass('/admin/packages')}>Manage Packages</Link>
+            )}
           </div>
         )}
       </div>
